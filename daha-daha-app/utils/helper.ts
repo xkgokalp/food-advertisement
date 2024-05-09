@@ -1,18 +1,3 @@
-// export function extractString(htmlString: any) {
-// 	// HTML taglarinden kurtulduk
-// 	const textWithoutTags = htmlString?.replace(
-// 		/(\b[A-Z][a-z]*)/g,
-// 		function (match: any) {
-// 			return match.charAt(0).toUpperCase() + match.slice(1)
-// 		},
-// 	)
-
-// 	// Stringi trimleme işlemi yaptık
-// 	const cleanText = textWithoutTags?.trim()
-
-// 	return cleanText
-// }
-
 export function extractText(htmlString: any) {
 	// HTML taglarını kaldır
 	const cleanText = htmlString?.replace(/<[^>]*>/g, "")

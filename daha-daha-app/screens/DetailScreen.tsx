@@ -49,8 +49,6 @@ const DetailScreen = () => {
 		fetchDetails()
 	}, [Id])
 
-	console.log(data)
-
 	return (
 		<View style={styles.container}>
 			<View style={styles.goBackButton}>

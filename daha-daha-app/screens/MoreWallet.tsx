@@ -1,7 +1,7 @@
 import React from "react"
-import { View, Text, Button, StyleSheet } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 
-const MoreWallet = ({ navigation }: any) => {
+const MoreWallet = () => {
 	return (
 		<View style={styles.container}>
 			<Text>More Wallet Screen Coming Soon...</Text>

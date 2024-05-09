@@ -1,11 +1,5 @@
 import React from "react"
-import {
-	View,
-	Text,
-	StyleSheet,
-	Animated,
-	useWindowDimensions,
-} from "react-native"
+import { View, StyleSheet, Animated, useWindowDimensions } from "react-native"
 
 const Paginator = ({ data, scrollX, dotColors }: any) => {
 	const { width } = useWindowDimensions()
@@ -58,7 +52,7 @@ const styles = StyleSheet.create({
 		height: 10,
 		borderRadius: 5,
 		marginHorizontal: 8,
-		marginBottom: 150,
+		marginBottom: 134,
 		marginTop: -60,
 	},
 })

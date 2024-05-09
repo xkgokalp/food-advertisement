@@ -1,19 +1,9 @@
 import React, { useState, useEffect } from "react"
-import {
-	View,
-	FlatList,
-	StyleSheet,
-	Text,
-	useWindowDimensions,
-	Image,
-	TouchableOpacity,
-} from "react-native"
-import { data } from "../data"
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { extractText } from "../../utils/helper"
 
 const BrandCardItem = ({ item }: any) => {
-	//const { width } = useWindowDimensions()
 	const navigation: any = useNavigation()
 
 	item.Title = extractText(item.Title)

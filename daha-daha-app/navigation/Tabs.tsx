@@ -16,6 +16,7 @@ type CustomTabBarButtonProps = {
 }
 
 function HomeStack() {
+	//stack navigation home screen için
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Stack.Screen name="HomeScreen" component={HomeScreen} />
@@ -33,7 +34,7 @@ function HomeStack() {
 const CustomTabBarButton = ({ children, onPress }: CustomTabBarButtonProps) => (
 	<TouchableOpacity
 		style={{
-			top: -20,
+			top: -10,
 			justifyContent: "center",
 			alignItems: "center",
 			...style.shadow,
@@ -42,8 +43,8 @@ const CustomTabBarButton = ({ children, onPress }: CustomTabBarButtonProps) => (
 	>
 		<View
 			style={{
-				width: 70,
-				height: 70,
+				width: 80,
+				height: 0,
 				borderRadius: 35,
 				backgroundColor: "#33333",
 			}}
@@ -54,6 +55,7 @@ const CustomTabBarButton = ({ children, onPress }: CustomTabBarButtonProps) => (
 )
 
 const Tabs = () => {
+	//tab navigation
 	return (
 		<Tab.Navigator
 			initialRouteName="Home"

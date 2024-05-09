@@ -1,9 +1,9 @@
 import React from "react"
-import { View, Text, Button, StyleSheet, SafeAreaView } from "react-native"
+import { View, StyleSheet } from "react-native"
 import BrandCards from "../components/BrandCards/BrandCards"
 import Header from "../components/Header/Header"
 
-const HomeScreen = ({ navigation }: any) => {
+const HomeScreen = () => {
 	return (
 		<View style={styles.container}>
 			<Header />
