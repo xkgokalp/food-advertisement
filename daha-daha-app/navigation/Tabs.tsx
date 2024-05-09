@@ -1,6 +1,5 @@
 import React from "react"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import HomeScreen from "../screens/HomeScreen"
 import DetailScreen from "../screens/DetailScreen"
@@ -20,7 +19,13 @@ function HomeStack() {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Stack.Screen name="HomeScreen" component={HomeScreen} />
-			<Stack.Screen name="Detail" component={DetailScreen} />
+			<Stack.Screen
+				name="Detail"
+				component={DetailScreen}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen name="Kesfet" component={KesfetScreen} />
+			<Stack.Screen name="MoreWallet" component={MoreWallet} />
 		</Stack.Navigator>
 	)
 }
@@ -51,6 +56,7 @@ const CustomTabBarButton = ({ children, onPress }: CustomTabBarButtonProps) => (
 const Tabs = () => {
 	return (
 		<Tab.Navigator
+			initialRouteName="Home"
 			screenOptions={{
 				headerShown: false,
 				tabBarShowLabel: false,

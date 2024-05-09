@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import {
 	View,
 	FlatList,
@@ -10,30 +10,62 @@ import {
 } from "react-native"
 import { data } from "../data"
 import { useNavigation } from "@react-navigation/native"
+import { extractText } from "../../utils/helper"
 
 const BrandCardItem = ({ item }: any) => {
 	//const { width } = useWindowDimensions()
 	const navigation: any = useNavigation()
 
-	// function handleNavigateToDetail() {
-	// 	navigation.navigate("Detail")
-	// }
+	item.Title = extractText(item.Title)
+	item.ListButtonText = extractText(item.ListButtonText)
+
 	return (
 		<View style={styles.outerContainer}>
-			<View style={styles.biggerContainer}></View>
+			<View
+				style={[
+					styles.biggerContainer,
+					{ backgroundColor: item.PromotionCardColor },
+				]}
+			></View>
 			<View style={styles.container}>
-				<Image
-					source={item.image}
-					style={[styles.image, { resizeMode: "contain" }]}
-				/>
-				<View>
-					<Text style={styles.title}>{item.title}</Text>
+				<View style={{ height: 300, paddingHorizontal: 10 }}>
+					<Image
+						source={{ uri: item.ImageUrl }}
+						style={[styles.image, { resizeMode: "cover" }]}
+					/>
+					<Image
+						source={{ uri: item.BrandIconUrl }}
+						style={styles.brandImg}
+					/>
+				</View>
+				<View
+					style={{
+						alignItems: "center",
+						flex: 1,
+						flexDirection: "column",
+						justifyContent: "flex-start",
+						margin: 10,
+					}}
+				>
+					<Text style={styles.title}>{item?.Title}</Text>
 					{/* <Text style={styles.description}>{item.description}</Text> */}
 					<TouchableOpacity
 						style={styles.dahaDahaBtn}
-						onPress={() => navigation?.navigate("Detail")}
+						onPress={() =>
+							navigation?.navigate("Detail", {
+								//SeoName: item.SeoName,
+								Id: item.Id,
+							})
+						}
 					>
-						<Text style={styles.dahaDahaTxt}>Daha Daha</Text>
+						<Text
+							style={[
+								styles.dahaDahaTxt,
+								{ color: item.PromotionCardColor },
+							]}
+						>
+							{item.ListButtonText}
+						</Text>
 					</TouchableOpacity>
 				</View>
 			</View>
@@ -46,35 +78,54 @@ export default BrandCardItem
 const styles = StyleSheet.create({
 	outerContainer: {
 		flex: 1,
-		borderWidth: 2,
 		width: 300,
 		height: 500,
-		overflow: "hidden",
+		//overflow: "hidden",
+		marginRight: 20,
 	},
 	biggerContainer: {
 		position: "absolute",
-		width: 500,
-		height: "100%",
-		backgroundColor: "#009639",
+		width: 300,
+		overflow: "hidden",
+		height: "95%",
 		borderRadius: 20,
-		zIndex: -3,
-		transform: [{ skewY: "5deg" }],
+		borderTopLeftRadius: 30,
+		borderBottomRightRadius: 20,
+		transform: [{ skewY: "3deg" }],
 	},
 	container: {
-		borderColor: "red",
+		alignItems: "center",
 		backgroundColor: "#fff",
-		borderWidth: 2,
-		height: "90%",
+		height: "92%",
 		width: 300,
-		gap: 10,
+		borderRadius: 10,
+		gap: 20,
 		padding: 5,
-		marginRight: 10,
+		paddingHorizontal: 10,
+		marginRight: 20,
 		position: "relative",
 		zIndex: 0,
 	},
 	image: {
-		//flex: 0.4,
 		justifyContent: "center",
+		width: 285,
+		height: 300,
+		borderTopLeftRadius: 20,
+		borderTopRightRadius: 20,
+		borderBottomLeftRadius: 130,
+		borderBottomRightRadius: 20,
+	},
+	brandImg: {
+		width: 70,
+		height: 70,
+		borderRadius: 50,
+		overflow: "hidden",
+		position: "relative",
+		zIndex: 1,
+		top: -80,
+		left: 0,
+		borderWidth: 6,
+		borderColor: "#fff",
 	},
 	title: {
 		fontSize: 20,
@@ -89,14 +140,15 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 	},
 	dahaDahaBtn: {
-		backgroundColor: "#333",
 		padding: 10,
 		borderRadius: 10,
 		textAlign: "center",
 		width: 150,
+		alignItems: "center",
+		justifyContent: "center",
 	},
 	dahaDahaTxt: {
-		color: "#fff",
 		fontSize: 18,
+		fontWeight: "bold",
 	},
 })
